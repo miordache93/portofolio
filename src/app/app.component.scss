@@ -1,0 +1,115 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+@mixin landscape-image($url) {
+  background-image: url($url);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.app-component {
+  background-color: grey;
+
+  .app-component__landscape {
+    @include landscape-image('../assets/images/landscape1.jpeg');
+
+    @media screen and (max-width: 576px ) {
+      background-image: url('../assets/images/lanscape-mobile.jpeg');
+    }
+  }
+
+  .app-component__grid {
+    >div {
+      height: 501px;
+      padding: 0;
+      &:hover {
+        >div {
+          filter: blur(3px);
+          -webkit-filter: blur(3px);
+        }
+
+        svg {
+          background-color: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+
+    svg {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.5);
+
+      text {
+        font-family: 'Roboto';
+        font-size: 30px;
+      }
+    }
+
+    .grid-1 {
+      .grid-bg-image {
+        @include landscape-image('../assets/images/grid-1.jpeg');
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .grid-2 {
+      .grid-bg-image {
+        @include landscape-image('../assets/images/grid-2.jpeg');
+        height: 100%;
+        width: 100%;
+
+      }
+    }
+    .grid-3 {
+      .grid-bg-image {
+        @include landscape-image('../assets/images/grid-3.jpeg');
+        height: 100%;
+        width: 100%;
+
+      }
+    }
+    .grid-4 {
+      .grid-bg-image {
+        @include landscape-image('../assets/images/grid-4.jpeg');
+        height: 100%;
+        width: 100%;
+
+      }
+    }
+  }
+
+  .app-component__reviews {
+    background-color: lightcyan;
+  }
+
+  .app-component__form {
+    background-color: orange;
+  }
+
+  .app-component__footer {
+    background-color: black;
+    color: white;
+  }
+
+  // Styling for SVG Border Animation
+  .shape {
+    stroke-dasharray: 140 540;
+    stroke-dashoffset: -294;
+    stroke-width: 6px;
+    fill: transparent;
+    stroke: #000000;
+    border-bottom: 5px solid black;
+    transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+  }
+
+  .svg-container:hover .shape {
+    stroke-width: 6px;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 760;
+  }
+}
+
+
