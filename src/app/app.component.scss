@@ -41,6 +41,9 @@
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: rgba(255, 255, 255, 0.5);
+      &:hover {
+        cursor: pointer;
+      }
 
       text {
         font-family: 'Roboto';
@@ -82,16 +85,87 @@
   }
 
   .app-component__reviews {
-    background-color: lightcyan;
+    background-color: #ffffff;
+    height: 300px;
+
+    h1 {
+      color: #000000;
+    }
   }
 
   .app-component__form {
-    background-color: orange;
+    background-color: #000000;
+
+    h1 {
+      color: #ffffff;
+    }
+
+    form {
+      text-align: left;
+
+      label {
+        color: #ffffff;
+      }
+      input, textarea {
+        background-color: lightgray;
+      }
+
+      button {
+        width: 150px;
+      }
+
+      ::ng-deep {
+        ngb-rating {
+          span {
+            font-size: 25px;
+            color: goldenrod;
+            padding: 2px;
+          }
+        }
+      }
+    }
   }
 
   .app-component__footer {
     background-color: black;
-    color: white;
+    color: lightgray;
+
+    .company {
+      a {
+        color: lightgrey;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+    i.heart {
+      color: #eb5e28;
+      animation: 1s infinite heathing;
+    }
+
+    a {
+      font-size: 20px;
+    }
+
+    .contact-details {
+      a, i {
+        font-size: 13px;
+        cursor: pointer;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+
+  // Heart Heathing Animation
+  @keyframes heathing {
+    0% { transform: scale( .75 ); }
+    20% { transform: scale( 1 ); }
+    40% { transform: scale( .75 ); }
+    60% { transform: scale( 1 ); }
+    80% { transform: scale( .75 ); }
+    100% { transform: scale( .75 ); }
   }
 
   // Styling for SVG Border Animation
