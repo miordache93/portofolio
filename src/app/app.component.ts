@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { environment } from '../environments/environment';
+import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +14,14 @@ export class AppComponent implements OnInit {
   rating = 0;
   hovered = 0;
   date: Date = new Date();
+  revies = REVIEWS;
+  flipDiv = false;
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(@Inject(PLATFORM_ID) private platformId: any, @Inject(DOCUMENT) private document: any, private fb: FormBuilder) {
     this.form = this.fb.group({
       email: ['', [this.emailValidator]],
-      description: ['', [Validators.required]],
+      message: ['', [Validators.required]],
       rating: [this.rating, [Validators.required, this.ratingValidator]],
       newsLetter: [false]
     });
@@ -25,7 +29,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
-  }
+  if (!isPlatformBrowser(this.platformId)) {
+    const bases = this.document.getElementsByTagName('base');
+
+    if (bases.length > 0) {
+        bases[0].setAttribute('href', environment.baseHref);
+    }
+}}
 
   submitForm() {
     console.log(this.form.value);
@@ -50,4 +60,46 @@ export class AppComponent implements OnInit {
       return null;
     }
   }
+
+  flipContent() {
+    this.flipDiv = !this.flipDiv;
+  }
 }
+
+const REVIEWS = [
+  {
+    id: 0,
+    name: 'Alex',
+    rating: 5,
+    message: 'Nice piece of work. Well done!',
+    avatarUrl: '../assets/images/avatar.jpeg'
+  },
+  {
+    id: 1,
+    name: 'Michael',
+    rating: 3,
+    message: 'Nice piece of work. Well done!',
+    avatarUrl: '../assets/images/avatar.jpeg'
+  },
+  {
+    id: 2,
+    name: 'Lennon',
+    rating: 3,
+    message: 'Nice piece of work. Well done!',
+    avatarUrl: '../assets/images/avatar.jpeg'
+  },
+  {
+    id: 3,
+    name: 'Mark',
+    rating: 3,
+    message: 'Nice piece of work. Well done!',
+    avatarUrl: '../assets/images/avatar.jpeg'
+  },
+  {
+    id: 4,
+    name: 'Austin',
+    rating: 3,
+    message: 'Nice piece of work. Well done!',
+    avatarUrl: '../assets/images/avatar.jpeg'
+  }
+];
