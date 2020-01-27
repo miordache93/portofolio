@@ -4,10 +4,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ResumeComponent } from './resume/resume.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ResumeComponent
   ],
   imports: [
     BrowserModule,

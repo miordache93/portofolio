@@ -1,112 +1,152 @@
 <div class="app-component d-flex flex-column text-center">
   <div class="app-component__landscape min-vh-100">
   </div>
-  <div class="app-component__grid min-vh-100 d-flex flex-column flex-md-row flex-md-wrap">
-    <ngx-flip [flip]="flipDiv">
-        <div front class="grid-1 svg-container col-12 col-md-6 d-flex flex-fill justify-content-center align-items-center">
-            <div class="grid-bg-image">
-            </div>
-            <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg" (click)="flipContent()">
-              <rect class="shape" height="60" width="200" />
-              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">about</text>
-            </svg>
-        </div>
-        <div back>
-          <h2>Back flip</h2>
-        </div>
-    </ngx-flip>
-    <div class="grid-2 svg-container col-12 col-md-6 d-flex flex-fill justify-content-center align-items-center">
-        <div class="grid-bg-image">
 
+  <main class="cd-main app-component__grid" [ngClass]="{'fold-is-open': foldContent}">
+    <ul #gallery class="cd-gallery m-0 p-0">
+      <li class="cd-item">
+        <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
+          (click)="viewContent('projects')">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+          </svg>
         </div>
-        <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="200" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">resume</text>
-        </svg>
-    </div>
-    <div class="grid-3 svg-container col-12 col-md-6 d-flex flex-fill justify-content-center align-items-center">
-        <div class="grid-bg-image">
+      </li>
 
+      <li class="cd-item">
+        <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
+          (click)="viewContent('resume')">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">resume</text>
+          </svg>
         </div>
-        <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="200" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
-        </svg>
-    </div>
-    <div class="grid-4 svg-container col-12 col-md-6 d-flex flex-fill justify-content-center align-items-center">
-        <div class="grid-bg-image">
+      </li>
 
+      <li class="cd-item">
+        <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
+          (click)="viewContent('portofolio')">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">portofolio</text>
+          </svg>
         </div>
-        <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="200" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">blog</text>
-        </svg>
+      </li>
+
+      <li class="cd-item">
+        <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
+          (click)="viewContent('blog')">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">blog</text>
+          </svg>
+        </div>
+      </li>
+
+      <!-- additional list items here -->
+    </ul> <!-- .cd-gallery -->
+  </main> <!-- .cd-main -->
+
+  <div class="cd-folding-panel" [ngClass]="{'is-open': foldContent}">
+
+    <div class="fold-left"></div> <!-- this is the left fold -->
+
+    <div class="fold-right"></div> <!-- this is the right fold -->
+
+    <div class="cd-fold-content">
+      <app-resume *ngIf="currentView  === 'resume'"></app-resume>
+      <h1 *ngIf="currentView === 'portofolio'">Portofolio</h1>
+      <h1 *ngIf="currentView === 'blog'">Blog</h1>
     </div>
+
+    <a class="cd-close" (click)="viewContent()"></a>
   </div>
   <div class="app-component__form pt-3 pb-3 d-flex flex-column justify-content-center align-items-center">
     <h1>What do you think?</h1>
-    <form  [formGroup]="form" (ngSubmit)="submitForm()"
-        class="d-flex flex-column justify-content-center align-items-center col-sm-6 col-md-8">
-        <div class="form-group col-sm-6 col-md-8">
-            <label for="message">Message</label>
-            <textarea class="form-control" id="message" placeholder="Write something" formControlName="message">
+    <form [formGroup]="form" (ngSubmit)="submitForm()"
+      class="d-flex flex-column justify-content-center align-items-center col-sm-6 col-md-8">
+      <div class="form-group col-sm-6 col-md-8">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" placeholder="Write something" formControlName="message">
               </textarea>
-            <small id="messageHelp" class="form-text text-muted">Write down some of your impressions.</small>
+        <small id="messageHelp" class="form-text text-muted">Write down some of your impressions.</small>
+      </div>
+      <div class="p-0 col-sm-6 col-md-8 d-flex flex-column flex-sm-row justify-content-between align-items-center">
+        <div class="form-group col-sm-6 col-md-4 d-flex flex-column">
+          <label for="rating">Rating</label>
+          <ngb-rating (hover)="hovered=$event" (leave)="hovered=0" formControlName="rating" max="5"></ngb-rating>
         </div>
-        <div class="p-0 col-sm-6 col-md-8 d-flex flex-column flex-sm-row justify-content-between align-items-center">
-            <div class="form-group col-sm-6 col-md-4 d-flex flex-column">
-                <label for="rating">Rating</label>
-                <ngb-rating (hover)="hovered=$event" (leave)="hovered=0"  formControlName="rating" max="5"></ngb-rating>
-            </div>
-            <div class="form-group col-sm-6 col-md-4 d-flex flex-column">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="checkbox" formControlName="newsLetter">
-                  <label class="form-check-label" for="checkbox">
-                    Receive newsletters
-                  </label>
-                </div>
-            </div>
+        <div class="form-group col-sm-6 col-md-4 d-flex flex-column">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkbox" formControlName="newsLetter">
+            <label class="form-check-label" for="checkbox">
+              Receive newsletters
+            </label>
+          </div>
         </div>
-        <div class="form-group col-sm-6 col-md-8">
-            <label for="email">Email address (optional)</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="example@mail.com" formControlName="email">
-            <small id="emailHelp" class="form-text text-muted">I'll never share your email with anyone else.</small>
-        </div>
-        <button type="submit" class="btn btn-secondary active" [disabled]="!form.valid">Submit</button>
+      </div>
+      <div class="form-group col-sm-6 col-md-8">
+        <label for="email">Email address (optional)</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="example@mail.com"
+          formControlName="email">
+        <small id="emailHelp" class="form-text text-muted">I'll never share your email with anyone else.</small>
+      </div>
+      <button type="submit" class="btn btn-secondary active" [disabled]="!form.valid">Submit</button>
     </form>
   </div>
   <div class="app-component__reviews pt-3 pb-3">
-      <h1>Reviews</h1>
-      <div class="reviews-container d-flex flex-column flex-sm-row align-items-center flex-wrap justify-content-center justify-content-sm-between">
-        <div class="shadow-lg p-3 m-2 bg-white rounded col-12 col-sm-4 col-md-3 " *ngFor="let review of revies">
-          <img [src]="review.avatarUrl" alt="Avatar" class="avatar">
-          <p class="font-weight-bold">{{review.name}}</p>
-          <ngb-rating [(rate)]="review.rating" max="5" [readonly]="true"></ngb-rating>
-          <p>{{review.message}}</p>
+    <h1>Reviews</h1>
+    <div
+      class="reviews-container d-flex flex-column flex-sm-row align-items-center flex-wrap justify-content-center justify-content-sm-between">
+      <div class="shadow-lg p-3 m-2 bg-white rounded col-12 col-sm-4 col-md-3 " *ngFor="let review of revies">
+        <img [src]="review.avatarUrl" alt="Avatar" class="avatar">
+        <p class="font-weight-bold">{{review.name}}</p>
+        <ngb-rating [(rate)]="review.rating" max="5" [readonly]="true"></ngb-rating>
+        <p>{{review.message}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-component__stack pt-3 pb-3">
+    <h1> Stack Used</h1>
+    <div class="stack-container d-flex flex-wrap justify-content-around align-items-center">
+      <div class="col-4 col-sm-3 p2" *ngFor="let image of images">
+        <img class="" [src]="image" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="app-component__footer p-3 d-flex flex-column justify-content-between align-items-lg-stretch">
+    <div
+      class="pl-2 pr-2 d-flex flex-column flex-sm-row justify-content-center align-items-center justify-content-sm-between">
+      <div class="company col-6 aling-items-start">
+        <a class="btn btn-link font-weight-bold" href="https://eminds.ro"> E-MINDS </a>
+      </div>
+
+      <div class="contact-details col-12 col-sm-6 d-flex align-items-sm-start justify-content-between">
+        <p class="col-4 p-0">
+          Contact:
+        </p>
+        <div class="d-flex p-0 col-8 flex-column justify-content-center align-items-start ">
+          <a class="mb-0">
+            iordache.mihaialexandru@gmail.com <i class="fas fa-envelope"></i></a>
+          <a>+40742696988 <i class="fas fa-phone"></i> </a>
         </div>
       </div>
-  </div>
-  <div class="app-component__footer p-3 d-flex flex-column justify-content-between align-items-lg-stretch">
-    <div class="pl-2 pr-2 d-flex flex-column flex-sm-row justify-content-center align-items-center justify-content-sm-between">
-        <div class="company col-6 aling-items-start">
-            <a class="btn btn-link font-weight-bold" href="https://eminds.ro">  E-MINDS </a>
-        </div>
-
-        <div class="contact-details col-12 col-sm-6 d-flex align-items-sm-start justify-content-between">
-            <p class="col-4 p-0">
-              Contact:
-            </p>
-            <div class="d-flex p-0 col-8 flex-column justify-content-center align-items-start ">
-                <a class="mb-0">
-                    iordache.mihaialexandru@gmail.com <i class="fas fa-envelope"></i></a>
-                <a>+40742696988 <i class="fas fa-phone"></i>  </a>
-            </div>
-        </div>
 
     </div>
 
-      <div class="copyright">
-          © {{date | date: 'yyyy'}} | made with <i class="fa fa-heart heart"></i> by MihaI Iordache
-      </div>
+    <div class="copyright">
+      © {{date | date: 'yyyy'}} | made with <i class="fa fa-heart heart"></i> by MihaI Iordache
+    </div>
   </div>
 </div>
