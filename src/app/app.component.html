@@ -2,45 +2,42 @@
   <div class="app-component__landscape min-vh-100">
   </div>
   <div #gridContent class="app-component__grid min-vh-100 d-flex flex-column flex-md-row flex-md-wrap">
-    
-    <div class="grid-1 svg-container col-12 col-md-6 d-flex flex-fill justify-content-center align-items-center"
-      [ngClass]="{'fold': foldContent}" (click)="viewContent()">
-      <div class="grid-bg-image">
+      <div class="left-column p-0 col-6 d-flex flex-column" [ngClass]="{'fold': foldContent}">
+          <div class="grid-1 p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center" (click)="viewContent()">
+            <div class="grid-bg-image">
+            </div>
+            <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+              <rect class="shape" height="60" width="200" />
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">about</text>
+            </svg>
+          </div>
+        <div class="grid-2 p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center" (click)="viewContent()">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+          </svg>
+        </div>
       </div>
-      <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-        <rect class="shape" height="60" width="200" />
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">about</text>
-      </svg>
-    </div>
-    <div class="grid-2 svg-container col-12 col-md-6 d-flex flex-fill justify-content-center align-items-center"
-    [ngClass]="{'fold': foldContent}">
-      <div class="grid-bg-image">
+    <div class="center-column" [hidden]="true"></div>
+    <div class="right-column p-0 col-6 d-flex flex-column" [ngClass]="{'fold': foldContent}">
+        <div class="grid-3 p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center" (click)="viewContent()">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">resume</text>
+          </svg>
+        </div>
+      <div class="grid-4 p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center" (click)="viewContent()">
+        <div class="grid-bg-image">
+        </div>
+        <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+          <rect class="shape" height="60" width="200" />
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">blog</text>
+        </svg>
       </div>
-      <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-        <rect class="shape" height="60" width="200" />
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">resume</text>
-      </svg>
-    </div>
-    <div class="grid-3 svg-container col-12 col-md-6 d-flex flex-fill justify-content-center align-items-center" 
-    [ngClass]="{'fold': foldContent}">
-      <div class="grid-bg-image">
-      </div>
-      <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-        <rect class="shape" height="60" width="200" />
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
-      </svg>
-    </div>
-    <div class="grid-4 svg-container col-12 col-md-6 d-flex flex-fill justify-content-center align-items-center"
-    [ngClass]="{'fold': foldContent}">
-      <div class="grid-bg-image">
-      </div>
-      <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-        <rect class="shape" height="60" width="200" />
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">blog</text>
-      </svg>
-    </div>
-    <div class="middle-content" [ngClass]="{'fold-content': foldContent}">
-      <h1>TEST</h1>
     </div>
   </div>
   <div class="app-component__form pt-3 pb-3 d-flex flex-column justify-content-center align-items-center">
