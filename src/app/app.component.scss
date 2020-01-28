@@ -19,9 +19,12 @@
   }
 
   .app-component__grid {
+    overflow-x: hidden;
+
     >div {
       height: 501px;
       padding: 0;
+      transition: transform 0.5s 0.4s;
       &:hover {
         >div {
           filter: blur(3px);
@@ -32,6 +35,16 @@
           background-color: rgba(255, 255, 255, 0.8);
         }
       }
+    }
+
+    >div.fold:nth-child(odd) {
+      transform: translateX(-50%);
+      transition: transform 0.5s 0s;
+    }
+
+    >div.fold:nth-child(even) {
+      transform: translateX(50%);
+      transition: transform 0.5s 0s;
     }
 
     svg {
@@ -80,6 +93,14 @@
         height: 100%;
         width: 100%;
 
+      }
+    }
+
+    .middle-content {
+      visibility: hidden;
+
+      &.fold-content {
+        visibility: visible;
       }
     }
   }
