@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 
 const REVIEWS = [
   {
@@ -39,6 +40,8 @@ const REVIEWS = [
   }
 ];
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -51,11 +54,13 @@ export class AppComponent implements OnInit {
   hovered = 0;
   date: Date = new Date();
   revies = REVIEWS;
-  @ViewChild('gridContent', {static: false}) scrollTarget: any;
+  @ViewChild('gallery', {static: false}) scrollTarget: any;
   foldContent = false;
+  currentView = '';
+  images = [];
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, @Inject(DOCUMENT) private document: Document) {
     this.form = this.fb.group({
       email: ['', [this.emailValidator]],
       message: ['', [Validators.required]],
@@ -65,7 +70,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.images = [
+      '../assets/images/stack/html.png',
+      '../assets/images/stack/sass.png',
+      '../assets/images/stack/bootstrap.png',
+      '../assets/images/stack/javascript.png',
+      '../assets/images/stack/angular.png',
+      '../assets/images/stack/nodejs.png',
+      '../assets/images/stack/mongodb.png',
+      '../assets/images/stack/docker.png',
+      '../assets/images/stack/azure.png'
+    ];
   }
 
   submitForm() {
@@ -92,9 +107,15 @@ export class AppComponent implements OnInit {
     }
   }
 
-  viewContent() {
-    this.scrollTarget.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
+  viewContent(viewType) {
+    this.currentView = viewType;
     this.foldContent = !this.foldContent;
+    if (this.foldContent) {
+      this.scrollTarget.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
+      this.document.body.classList.add('overflow-hidden');
+    } else {
+      this.document.body.classList.remove('overflow-hidden');
+    }
 
   }
 

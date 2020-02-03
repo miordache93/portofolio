@@ -1,41 +1,33 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+@import "./folding-panel.scss";
 
-@mixin landscape-image($url) {
-  background-image: url($url);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 .app-component {
   background-color: grey;
 
   .app-component__landscape {
     @include landscape-image('../assets/images/landscape1.jpeg');
 
-    @media screen and (max-width: 576px ) {
+    @media screen and (max-width: 576px) {
       background-image: url('../assets/images/lanscape-mobile.jpeg');
     }
   }
 
   .app-component__grid {
-    overflow-x: hidden;
 
+    .cd-item {
+      overflow-y: hidden;
+    }
 
-      .svg-container:hover {
-        >div {
-          filter: blur(3px);
-          -webkit-filter: blur(3px);
-        }
-
-        svg {
-          background-color: rgba(255, 255, 255, 0.8);
-        }
+    .cd-item>div:hover {
+      .grid-bg-image {
+        filter: blur(3px);
+        -webkit-filter: blur(3px);
       }
-      .is-open {
-        z-index: 99;
+      svg {
+        background-color: rgba(255, 255, 255, 0.8);
       }
-    
+    }
 
     svg {
       z-index: 2;
@@ -44,6 +36,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: rgba(255, 255, 255, 0.5);
+
       &:hover {
         cursor: pointer;
       }
@@ -53,36 +46,24 @@
         font-size: 30px;
       }
     }
+  }
 
-    .grid-1 {
-      .grid-bg-image {
-        @include landscape-image('../assets/images/grid-1.jpeg');
-        height: 100%;
-        width: 100%;
-      }
+  .app-component__stack {
+    background-color: #000000;
+    border-bottom: 2px solid grey;
+
+    h1 {
+      color: white;
     }
-    .grid-2 {
-      .grid-bg-image {
-        @include landscape-image('../assets/images/grid-2.jpeg');
-        height: 100%;
-        width: 100%;
 
+    .stack-container {
+      div {
+     
       }
-    }
-    .grid-3 {
-      .grid-bg-image {
-        @include landscape-image('../assets/images/grid-3.jpeg');
-        height: 100%;
-        width: 100%;
-
-      }
-    }
-    .grid-4 {
-      .grid-bg-image {
-        @include landscape-image('../assets/images/grid-4.jpeg');
-        height: 100%;
-        width: 100%;
-
+      img {
+        object-fit: contain;
+        width: 80px; /* You can set the dimensions to whatever you want */
+        height: 80px;
       }
     }
   }
@@ -95,6 +76,9 @@
     .reviews-container {
       div {
         margin: 1px;
+      }
+      .shadow-lg:hover {
+        top:5;
       }
     }
 
@@ -123,7 +107,9 @@
       label {
         color: #ffffff;
       }
-      input, textarea {
+
+      input,
+      textarea {
         background-color: lightgray;
       }
 
@@ -150,11 +136,13 @@
     .company {
       a {
         color: lightgrey;
+
         &:hover {
           color: white;
         }
       }
     }
+
     i.heart {
       color: #eb5e28;
       animation: 1s infinite heathing;
@@ -165,9 +153,12 @@
     }
 
     .contact-details {
-      a, i {
+
+      a,
+      i {
         font-size: 13px;
         cursor: pointer;
+
         &:hover {
           color: white;
         }
@@ -177,12 +168,29 @@
 
   // Heart Heathing Animation
   @keyframes heathing {
-    0% { transform: scale( .75 ); }
-    20% { transform: scale( 1 ); }
-    40% { transform: scale( .75 ); }
-    60% { transform: scale( 1 ); }
-    80% { transform: scale( .75 ); }
-    100% { transform: scale( .75 ); }
+    0% {
+      transform: scale(.75);
+    }
+
+    20% {
+      transform: scale(1);
+    }
+
+    40% {
+      transform: scale(.75);
+    }
+
+    60% {
+      transform: scale(1);
+    }
+
+    80% {
+      transform: scale(.75);
+    }
+
+    100% {
+      transform: scale(.75);
+    }
   }
 
   // Styling for SVG Border Animation
@@ -202,5 +210,3 @@
     stroke-dasharray: 760;
   }
 }
-
-
