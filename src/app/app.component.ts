@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   hovered = 0;
   date: Date = new Date();
   revies = REVIEWS;
-  @ViewChild('gridContent', {static: false}) scrollTarget: any;
+  @ViewChild('gallery', {static: false}) scrollTarget: any;
   foldContent = false;
 
 

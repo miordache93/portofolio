@@ -1,64 +1,72 @@
 <div class="app-component d-flex flex-column text-center">
   <div class="app-component__landscape min-vh-100">
   </div>
-  <div #gridContent class="app-component__grid min-vh-100 d-flex flex-column flex-md-row flex-md-wrap">
-    <div class="left-column p-0 col-6 d-flex flex-column" [ngClass]="{'col-4 fold': foldContent, 'col-6': !foldContent}"
-    [ngStyle]="{'transform':foldContent ? ' translateX(-50%)' : 'none', 'transition': 'transform 0.5s 0s'}"
-    >
-      <div class="grid-1 p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
-        (click)="viewContent()">
-        <div class="grid-bg-image">
+
+  <main class="cd-main app-component__grid" [ngClass]="{'fold-is-open': foldContent}">
+    <ul #gallery class="cd-gallery m-0 p-0">
+      <li class="cd-item">
+        <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
+          (click)="viewContent()">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+          </svg>
         </div>
-        <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="200" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">about</text>
-        </svg>
-      </div>
-      <div class="grid-2 p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
-        (click)="viewContent()">
-        <div class="grid-bg-image">
+      </li>
+
+      <li class="cd-item">
+        <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
+          (click)="viewContent()">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+          </svg>
         </div>
-        <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="200" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
-        </svg>
-      </div>
+      </li>
+
+      <li class="cd-item">
+        <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
+          (click)="viewContent()">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+          </svg>
+        </div>
+      </li>
+
+      <li class="cd-item">
+        <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
+          (click)="viewContent()">
+          <div class="grid-bg-image">
+          </div>
+          <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+            <rect class="shape" height="60" width="200" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+          </svg>
+        </div>
+      </li>
+
+      <!-- additional list items here -->
+    </ul> <!-- .cd-gallery -->
+  </main> <!-- .cd-main -->
+
+  <div class="cd-folding-panel" [ngClass]="{'is-open': foldContent}">
+
+    <div class="fold-left"></div> <!-- this is the left fold -->
+
+    <div class="fold-right"></div> <!-- this is the right fold -->
+
+    <div class="cd-fold-content">
+      <!-- content will be loaded using javascript -->
     </div>
 
-    <div class="center-column col-4"  [hidden]="!foldContent" [ngClass]="{'is-open': foldContent}"> 
-      <div class="primary-panel"></div>
-      <h1>primary</h1>
-      <div class="secondary-panel">
-        <h1>secondary</h1>
-      </div>
-
-      <div class="fold-content">
-        <h1>content</h1>
-      </div>
-    </div>
-
-    <div class="right-column p-0 col-6 d-flex flex-column"
-        [ngStyle]="{'transform':foldContent ? ' translateX(50%)' : 'none', 'transition': 'transform 0.5s 0s'}"
-        [ngClass]="{'col-4 fold': foldContent, 'col-6': !foldContent}">
-      <div class="grid-3 p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
-        (click)="viewContent()">
-        <div class="grid-bg-image">
-        </div>
-        <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="200" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">resume</text>
-        </svg>
-      </div>
-      <div class="grid-4 p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
-        (click)="viewContent()">
-        <div class="grid-bg-image">
-        </div>
-        <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-          <rect class="shape" height="60" width="200" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">blog</text>
-        </svg>
-      </div>
-    </div>
+    <a class="cd-close" (click)="foldContent = !foldContent"></a>
   </div>
   <div class="app-component__form pt-3 pb-3 d-flex flex-column justify-content-center align-items-center">
     <h1>What do you think?</h1>
