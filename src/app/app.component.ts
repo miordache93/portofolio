@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 
 const REVIEWS = [
   {
@@ -53,9 +54,10 @@ export class AppComponent implements OnInit {
   revies = REVIEWS;
   @ViewChild('gallery', {static: false}) scrollTarget: any;
   foldContent = false;
+  currentView = '';
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, @Inject(DOCUMENT) private document: Document) {
     this.form = this.fb.group({
       email: ['', [this.emailValidator]],
       message: ['', [Validators.required]],
@@ -92,9 +94,15 @@ export class AppComponent implements OnInit {
     }
   }
 
-  viewContent() {
+  viewContent(viewType) {
+    this.currentView = viewType;
     this.scrollTarget.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
     this.foldContent = !this.foldContent;
+    if(this.foldContent) {
+      this.document.body.classList.add('overflow-hidden');
+    } else {
+      this.document.body.classList.remove('overflow-hidden');
+    }
 
   }
 

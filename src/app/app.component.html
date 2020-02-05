@@ -6,7 +6,7 @@
     <ul #gallery class="cd-gallery m-0 p-0">
       <li class="cd-item">
         <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
-          (click)="viewContent()">
+          (click)="viewContent('projects')">
           <div class="grid-bg-image">
           </div>
           <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
@@ -18,36 +18,36 @@
 
       <li class="cd-item">
         <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
-          (click)="viewContent()">
+          (click)="viewContent('resume')">
           <div class="grid-bg-image">
           </div>
           <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
             <rect class="shape" height="60" width="200" />
-            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">resume</text>
           </svg>
         </div>
       </li>
 
       <li class="cd-item">
         <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
-          (click)="viewContent()">
+          (click)="viewContent('portofolio')">
           <div class="grid-bg-image">
           </div>
           <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
             <rect class="shape" height="60" width="200" />
-            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">portofolio</text>
           </svg>
         </div>
       </li>
 
       <li class="cd-item">
         <div class="p-0 svg-container col-12 d-flex flex-fill justify-content-center align-items-center"
-          (click)="viewContent()">
+          (click)="viewContent('blog')">
           <div class="grid-bg-image">
           </div>
           <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
             <rect class="shape" height="60" width="200" />
-            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">projects</text>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">blog</text>
           </svg>
         </div>
       </li>
@@ -63,7 +63,10 @@
     <div class="fold-right"></div> <!-- this is the right fold -->
 
     <div class="cd-fold-content">
-      <!-- content will be loaded using javascript -->
+      <h1 style="height: 950px;" *ngIf="currentView === 'projects'">Projects</h1>
+      <h1 *ngIf="currentView === 'resume'">Resume</h1>
+      <h1 *ngIf="currentView === 'portofolio'">Portofolio</h1>
+      <h1 *ngIf="currentView === 'blog'">Blog</h1>
     </div>
 
     <a class="cd-close" (click)="foldContent = !foldContent"></a>
