@@ -15,6 +15,10 @@
 
   .app-component__grid {
 
+    .cd-item {
+      overflow-y: hidden;
+    }
+
     .cd-item>div:hover {
       .grid-bg-image {
         filter: blur(3px);

@@ -96,9 +96,9 @@ export class AppComponent implements OnInit {
 
   viewContent(viewType) {
     this.currentView = viewType;
-    this.scrollTarget.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
     this.foldContent = !this.foldContent;
-    if(this.foldContent) {
+    if (this.foldContent) {
+      this.scrollTarget.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
       this.document.body.classList.add('overflow-hidden');
     } else {
       this.document.body.classList.remove('overflow-hidden');
