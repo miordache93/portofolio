@@ -1,0 +1,29 @@
+<div class="resume-component d-flex flex-column">
+    <h1>Resume</h1>
+    <div class="resume-container d-flex flex-column flex-sm-row justify-content-between">
+        <div class="work-history col-12 col-sm-6 d-flex flex-column">
+            <div class="mb-2  d-flex justify-content-start align-items-center">
+                <i class="fas fa-briefcase col-2 ml-2"></i>
+                <h5 class="m-0 col-8">WORK HISTORY</h5>
+            </div>
+            <div class="events-container">
+                <div class="event text-left ml-3" *ngFor="let event of workEvents">
+                    <h6 class="p-1"> {{event.period }} </h6>
+                    <h4> {{event.role }}</h4>
+                    <h5> {{event.company }}</h5>
+                    <div class="job-details" *ngFor="let detail of event.details; let i = index;">
+                        <p>{{detail}}</p>
+                        <!-- <br> -->
+                    </div>
+                </div>
+            </div>
+            <h4>EDUCATION</h4>
+            <div class="education">
+
+            </div>
+        </div>
+        <div class="code-skills col-12 col-sm-6  d-flex flex-column">
+            <h6>CODE SKILLS</h6>
+        </div>
+    </div>
+</div>

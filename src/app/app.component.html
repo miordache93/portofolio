@@ -63,8 +63,7 @@
     <div class="fold-right"></div> <!-- this is the right fold -->
 
     <div class="cd-fold-content">
-      <h1 style="height: 950px;" *ngIf="currentView === 'projects'">Projects</h1>
-      <h1 *ngIf="currentView === 'resume'">Resume</h1>
+      <app-resume *ngIf="currentView  === 'resume'"></app-resume>
       <h1 *ngIf="currentView === 'portofolio'">Portofolio</h1>
       <h1 *ngIf="currentView === 'blog'">Blog</h1>
     </div>

@@ -1,0 +1,45 @@
+.resume-component {
+    text-align: center;
+
+    .work-history {
+        i {
+            font-size: 30px;
+        }
+    }
+
+    .event:before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        bottom: -10px;
+        left: 12px;
+        width: 4px;
+        background: lightgray;
+    }
+
+    .event:after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 7px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: grey;
+    }
+
+    .event {
+        padding: 0 1em 2em 3.2em;
+        position: relative;
+    }
+
+    .events-container {
+        h6 {
+            border: 1px solid black;
+            margin: 10px auto;
+            display: inline-block;
+            color: #4ECE99;
+        }
+    }
+
+}
