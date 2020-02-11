@@ -1,29 +1,50 @@
 <div class="resume-component d-flex flex-column">
-    <h1>Resume</h1>
+    <h1 class="mb-4">Resume</h1>
     <div class="resume-container d-flex flex-column flex-sm-row justify-content-between">
-        <div class="work-history col-12 col-sm-6 d-flex flex-column">
-            <div class="mb-2  d-flex justify-content-start align-items-center">
-                <i class="fas fa-briefcase col-2 ml-2"></i>
-                <h5 class="m-0 col-8">WORK HISTORY</h5>
-            </div>
-            <div class="events-container">
-                <div class="event text-left ml-3" *ngFor="let event of workEvents">
-                    <h6 class="p-1"> {{event.period }} </h6>
-                    <h4> {{event.role }}</h4>
-                    <h5> {{event.company }}</h5>
-                    <div class="job-details" *ngFor="let detail of event.details; let i = index;">
-                        <p>{{detail}}</p>
-                        <!-- <br> -->
+        <div class="col-12 col-sm-6 d-flex flex-column justify-content-start align-items-start">
+            <div class="work-history">
+                <div class="mb-2 d-flex justify-content-start align-items-center">
+                    <i class="fas fa-briefcase col-2 ml-2"></i>
+                    <h5 class="m-0 col-8">WORK HISTORY</h5>
+                </div>
+                <div class="events-container">
+                    <div class="event text-left ml-3" *ngFor="let event of workEvents">
+                        <h6 class="p-1"> {{event.period }} </h6>
+                        <h4> {{event.role }}</h4>
+                        <h5> {{event.company }}</h5>
+                        <div class="job-details" *ngFor="let detail of event.details; let i = index;">
+                            <p>{{detail}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <h4>EDUCATION</h4>
-            <div class="education">
-
+            <div class="education-history mt-4">
+                <div class="mb-2 d-flex justify-content-start align-items-center">
+                    <i class="fas fa-briefcase col-2 ml-2"></i>
+                    <h5 class="m-0 col-8">EDUCATION</h5>
+                </div>
+                <div class="events-container">
+                    <div class="event text-left ml-3" *ngFor="let event of educationEvents">
+                        <h6 class="p-1"> {{event.period }} </h6>
+                        <h4> {{event.role }}</h4>
+                        <h5> {{event.location }}</h5>
+                        <p>{{ event.details }}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="code-skills col-12 col-sm-6  d-flex flex-column">
-            <h6>CODE SKILLS</h6>
+            <div class="mb-2 d-flex justify-content-start align-items-center">
+                <i class="fas fa-code col-2 ml-2"></i>
+                <h5 class="m-0 col-8">CODE SKILLS</h5>
+            </div>
+            <div class="skills-container mt-4 d-flex flex-row justify-content-start" *ngFor="let skill of codeSkills">
+                <div [attr.aria-label]="skill.name" class="skill-icon" class="mr-2" [innerHTML]="skill.icon"></div>
+                <div class="progress">
+                    <div class="progress-bar" [ngStyle]="{'width': skill.level + '%'}" role="progressbar" [attr.aria-valuenow]="skill.level"
+                    aria-valuemin="0" aria-valuemax="100">{{skill.level}}%</div>
+                  </div>
+            </div>
         </div>
     </div>
 </div>
