@@ -158,6 +158,12 @@ export class ResumeComponent implements OnInit {
       name: 'Jira',
       level: 60,
       icon: '<i class="fab fa-jira"></i>'
+    },
+    {
+      id:12,
+      name: 'Bootstrap',
+      level: 80,
+      icon: '<i class="fab fa-bootstrap"></i>'
     }
   ];
 

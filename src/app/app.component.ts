@@ -40,6 +40,8 @@ const REVIEWS = [
   }
 ];
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -55,6 +57,7 @@ export class AppComponent implements OnInit {
   @ViewChild('gallery', {static: false}) scrollTarget: any;
   foldContent = false;
   currentView = '';
+  images = [];
 
 
   constructor(private fb: FormBuilder, @Inject(DOCUMENT) private document: Document) {
@@ -67,7 +70,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.images = [
+      '../assets/images/stack/html.png',
+      '../assets/images/stack/sass.png',
+      '../assets/images/stack/bootstrap.png',
+      '../assets/images/stack/javascript.png',
+      '../assets/images/stack/angular.png',
+      '../assets/images/stack/nodejs.png',
+      '../assets/images/stack/mongodb.png',
+      '../assets/images/stack/docker.png',
+      '../assets/images/stack/azure.png'
+    ];
   }
 
   submitForm() {

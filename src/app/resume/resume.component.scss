@@ -48,6 +48,12 @@
         }
     }
 
+    .code-skills {
+        @media screen and (max-width: 570px) {
+            margin-top: 25px;
+        }
+    }
+
     .skills-container {
         .progress {
             width: 100%;

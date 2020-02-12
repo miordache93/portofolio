@@ -48,6 +48,26 @@
     }
   }
 
+  .app-component__stack {
+    background-color: #000000;
+    border-bottom: 2px solid grey;
+
+    h1 {
+      color: white;
+    }
+
+    .stack-container {
+      div {
+     
+      }
+      img {
+        object-fit: contain;
+        width: 80px; /* You can set the dimensions to whatever you want */
+        height: 80px;
+      }
+    }
+  }
+
   .app-component__reviews {
     background-color: #ffffff;
     max-height: 450px;
