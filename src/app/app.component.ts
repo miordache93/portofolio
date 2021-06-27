@@ -107,7 +107,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  viewContent(viewType) {
+  viewContent(viewType = null) {
     this.currentView = viewType;
     this.foldContent = !this.foldContent;
     if (this.foldContent) {
