@@ -153,10 +153,16 @@
     }
 
     .contact-details {
+      padding: 0;
+
+      p:first-child {
+        text-align: end;
+        font-size: 12px;
+      }
 
       a,
       i {
-        font-size: 13px;
+        font-size: 12px;
         cursor: pointer;
 
         &:hover {
